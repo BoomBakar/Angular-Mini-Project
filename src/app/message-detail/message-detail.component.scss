@@ -1,0 +1,21 @@
+
+.message-header {
+    background-color: lightblue;
+}
+
+.but{
+    background-color: #e62323;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px; 
+}
+.but:hover {
+    background-color: white;
+    color: #e62323;
+    cursor: pointer;
+    opacity: 0.8;
+}

@@ -1,1 +1,11 @@
-<p>message-detail works!</p>
+
+<h2>Details here</h2>
+<div class="message-header">
+<h3>{{message.name}}</h3>
+<p>{{message.email}}</p>
+</div>
+<div class="message-body">
+<p>{{message.message}}</p>
+</div>
+<button type="button" class="but" (click)="deleteMessage()">Delete</button>
+

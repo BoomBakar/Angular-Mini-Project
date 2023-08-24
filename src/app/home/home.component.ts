@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MessageDetailComponent } from '../message-detail/message-detail.component';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  //inject the user-data service using dependency injection
+  constructor(
+    private service: UserDataService
+  ) {
+    this.data = this.service.getAll();
+   }
   title:string = 'Home';
-  constructor() { }
+  
   name:string = '';
   email:string = '';
   message:string = '';
@@ -16,11 +24,13 @@ export class HomeComponent {
 
   onSubmit():void {
     this.isSubmitted = true;
-    this.data.push({
+    this.service.insert({
       name: this.name,
       email: this.email,
       message: this.message
-    });
-    console.log(`Thank you for your message! ${this.name} ${this.email} ${this.message}`);
+    });  
+  }
+  onDel(index:number):void {
+    this.service.delete(index);
   }
 }

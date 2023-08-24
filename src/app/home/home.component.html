@@ -13,7 +13,7 @@
   
   <button class="but" type="submit">Submit</button>
 </form>
-<div *ngIf="isSubmitted" class="table-data">
+<!-- <div *ngIf="isSubmitted" class="table-data">
 <h3>Form Data</h3>
 <table>
     <tr>
@@ -29,6 +29,10 @@
         <td>{{message.message}}</td>
     </tr>
 </table>
+</div> -->
+<div class="container" *ngIf="isSubmitted">
+    <app-message-detail *ngFor="let msg of data;let i = index;" [message]="msg" (delMsg)="onDel(i)"></app-message-detail>  
+
 </div>
 </div>
 
