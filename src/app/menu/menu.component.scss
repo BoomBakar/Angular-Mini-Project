@@ -1,0 +1,22 @@
+.navbar{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:30px;
+    height:50px;
+    background-color: #1e1e1e;
+}
+.item{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin: 10px;
+}
+.item:hover{
+    color: #e62323;
+    cursor: pointer;
+    opacity: 0.8;
+}

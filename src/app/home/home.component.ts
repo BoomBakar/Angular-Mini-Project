@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { MessageDetailComponent } from '../message-detail/message-detail.component';
 import { UserDataService } from '../services/user-data.service';
 
@@ -9,8 +9,8 @@ import { UserDataService } from '../services/user-data.service';
 })
 export class HomeComponent {
   //inject the user-data service using dependency injection
+  service: UserDataService = inject(UserDataService);
   constructor(
-    private service: UserDataService
   ) {
     this.data = this.service.getAll();
    }
@@ -24,7 +24,7 @@ export class HomeComponent {
 
   onSubmit():void {
     this.isSubmitted = true;
-    this.service.insert({
+    this.service.insert({ 
       name: this.name,
       email: this.email,
       message: this.message
