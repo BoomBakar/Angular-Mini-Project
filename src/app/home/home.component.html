@@ -1,17 +1,21 @@
 <h2>{{title.toUpperCase()}} Page</h2>
 <div class="form-here">
 <h3>Form</h3>
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
     <label for="name">Name</label>
-    <input type="text" id="name" [(ngModel)]="name" name="name" required class="form-data" placeholder="Enter your name">
-    
-    <label for="email">Email</label>
-    <input type="email" id="email" [(ngModel)]="email" name="email" required class="form-data" placeholder="Enter your email">
+    <input type="text" id="name" #uname="ngModel" [(ngModel)]="name" name="name" required class="form-data" placeholder="Enter your name">
+    <small *ngIf="!uname.valid && uname.touched">Name is required</small><br>
 
-    <label for="message">Message</label>
-    <textarea id="message" [(ngModel)]="message" name="message" required class="form-data" placeholder="Enter your message"></textarea>
-  
-  <button class="but" type="submit">Submit</button>
+    <label for="email">Email</label>
+    <input type="email" id="email" #myEmail="ngModel" email [(ngModel)]="email" name="email" required class="form-data" placeholder="Enter your email">
+    <small *ngIf="myEmail.errors && myEmail.errors?.['email'] && myEmail.touched">Email is not valid</small><br>
+    <small *ngIf="myEmail.errors && myEmail.errors?.['required'] && myEmail.touched">Email is required</small><br>
+
+    <label for="message">Message</label>    
+    <textarea id="message" #msg="ngModel" [(ngModel)]="message" name="message" required class="form-data" placeholder="Enter your message"></textarea>
+    <small *ngIf="!msg.valid && msg.touched">Message is required</small><br>
+
+  <button class="but" type="submit" [disabled]="!myForm.valid">Submit</button>
 </form>
 <!-- <div *ngIf="isSubmitted" class="table-data">
 <h3>Form Data</h3>

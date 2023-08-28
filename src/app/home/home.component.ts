@@ -13,6 +13,7 @@ export class HomeComponent {
   constructor(
   ) {
     this.data = this.service.getAll();
+    
    }
   title:string = 'Home';
   
@@ -22,7 +23,8 @@ export class HomeComponent {
   isSubmitted:boolean = false;
   data:Array<any> = [];
 
-  onSubmit():void {
+  onSubmit(myForm:any):void {
+    console.log(myForm);
     this.isSubmitted = true;
     this.service.insert({ 
       name: this.name,
